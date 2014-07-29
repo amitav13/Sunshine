@@ -1,7 +1,12 @@
 package com.example.amitav.sunshine;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -35,9 +40,36 @@ public class MyActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        }else if (id==R.id.action_map){
+            openPreferredLocationInMap();
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    private void openPreferredLocationInMap(){
+        final String LOG_TAG = "openPreferredLocationInMap";
+        SharedPreferences sharedPrefs=
+                PreferenceManager.getDefaultSharedPreferences(this);
+        String location = sharedPrefs.getString(
+                getString(R.string.pref_location_key),
+                getString(R.string.pref_location_default)
+        );
+        Uri geolocation = Uri.parse("geo:0,0?").buildUpon()
+                .appendQueryParameter("q",location)
+                .build();
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(geolocation);
+
+        if(intent.resolveActivity(getPackageManager())!=null){
+            startActivity(intent);
+        }
+        else{
+            Log.d(LOG_TAG,"Couldn't call location: "+location);
+        }
+
+    }
 }
