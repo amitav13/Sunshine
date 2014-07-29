@@ -17,6 +17,7 @@ public class MyActivity extends Activity {
                     .add(R.id.container, new ForecastFragment())
                     .commit();
         }
+
     }
 
 
@@ -38,9 +39,5 @@ public class MyActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
 
 }
