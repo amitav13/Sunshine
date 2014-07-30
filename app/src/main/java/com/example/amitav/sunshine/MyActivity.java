@@ -49,7 +49,6 @@ public class MyActivity extends Activity {
         }
         return super.onOptionsItemSelected(item);
     }
-
     private void openPreferredLocationInMap(){
         final String LOG_TAG = "openPreferredLocationInMap";
         SharedPreferences sharedPrefs=
@@ -68,8 +67,9 @@ public class MyActivity extends Activity {
             startActivity(intent);
         }
         else{
-            Log.d(LOG_TAG,"Couldn't call location: "+location);
+            Log.d(LOG_TAG, "Couldn't call location: " + location);
         }
 
     }
+
 }

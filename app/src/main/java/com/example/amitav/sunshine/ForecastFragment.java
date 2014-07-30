@@ -39,6 +39,7 @@ public class ForecastFragment extends Fragment {
 
     //public ForecastFragment() {}
     private ArrayAdapter<String> mForecastAdapter;
+    private android.support.v7.widget.ShareActionProvider mShareActionProvider;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,7 +85,9 @@ public class ForecastFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         //Log.i("menu", "onCreateOptionsMenu invoked, inflater called");
         inflater.inflate(R.menu.forecastfragment,menu);
+        return;
     }
+
     private void updateWeather(){
         FetchWeatherTask weatherTask = new FetchWeatherTask();
         String location = PreferenceManager.getDefaultSharedPreferences(getActivity())
