@@ -16,5 +16,6 @@
     <string name="pref_units_imperial">imperial</string>
     <string name="action_map">Map Location</string>
     <string name="action_share">Share</string>
+    <string name="title_activity_weather_contract">WeatherContract</string>
 
 </resources>
